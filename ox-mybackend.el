@@ -41,6 +41,9 @@
 ;;; Register the backend with Org Export.
 (org-export-define-backend 'mybackend
   '(
+    ;; This is top final function called when everything else has been
+    ;; transcoded. This function must be specified by the backend author.
+    (template . org-mybackend-template)
     ;; This handles the underlying contents of headlines.
     (section . org-mybackend-section)
     ;; This handles the headlines themselves.
@@ -72,7 +75,6 @@
     (line-break . org-mybackend-identity)
     (link . ignore)
     (node-property . org-mybackend-identity)
-    (template . org-mybackend-template)
     (paragraph . org-mybackend-identity)
     (plain-list . org-mybackend-identity)
     (planning . org-mybackend-identity)
